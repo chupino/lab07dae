@@ -1,0 +1,15 @@
+<h1>Detalle del Evento</h1>
+<a href="{% url 'editar_evento' evento_id=evento.id %}" class="btn btn-primary">Editar Evento</a>
+<a href="{% url 'eliminar_evento' evento_id=evento.id %}" class="btn btn-danger">Eliminar Evento</a>
+<h1>{{ evento.nombre }}</h1>
+<p>Fecha: {{ evento.fecha }}</p>
+<p>Descripción: {{ evento.descripcion }}</p>
+<p>Organizador: {{ evento.organizador.nombre }}</p>
+
+<h2>Personas Inscritas:</h2>
+<ul>
+    {% for usuario in inscritos %}
+        <li>{{ usuario.nombre }}</li>
+    {% endfor %}
+</ul>
+<a href="{% url 'inscribir_evento' %}">Inscribir</a>

@@ -1,0 +1,7 @@
+<h1>Usuario Más Participativo</h1>
+{% if usuario_mas_participativo %}
+    <p>El usuario más participativo en eventos es: {{ usuario_mas_participativo.nombre }}</p>
+    <p>Eventos Participados: {{ usuario_mas_participativo.eventos_participados }}</p>
+{% else %}
+    <p>No hay eventos registrados todavía.</p>
+{% endif %}

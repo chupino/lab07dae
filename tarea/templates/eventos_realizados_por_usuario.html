@@ -1,0 +1,20 @@
+<h1>Eventos Realizados por Usuario</h1>
+<form method="get" action="{% url 'eventos_realizados_por_usuario' %}">
+    <label for="usuario_id">Selecciona un Usuario:</label>
+    <select name="usuario_id" id="usuario_id">
+        <option value="">Todos los Usuarios</option>
+        {% for usuario in usuarios %}
+            <option value="{{ usuario.id }}" {% if usuario.id == usuario_seleccionado.id %}selected{% endif %}>{{ usuario.nombre }}</option>
+        {% endfor %}
+    </select>
+    <button type="submit">Filtrar</button>
+</form>
+
+{% if usuario_seleccionado %}
+    <h2>Eventos Realizados por {{ usuario_seleccionado.nombre }}</h2>
+    <ul>
+        {% for evento_realizado in eventos_realizados %}
+            <li>{{ evento_realizado.evento.nombre }} - {{ evento_realizado.evento.fecha }}</li>
+        {% endfor %}
+    </ul>
+{% endif %}
